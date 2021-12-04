@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/button1_m"
+        android:id="@+id/menu_button1"
         android:icon="?attr/actionModeCloseDrawable"
-        android:title="Left" />
+        android:title="1" />
     <item
-        android:id="@+id/button2_m"
+        android:id="@+id/menu_button2"
         android:icon="?attr/actionModePasteDrawable"
-
-        android:title="Center" />
+        android:title="2" />
     <item
-        android:id="@+id/button3_m"
+        android:id="@+id/menu_button3"
         android:icon="@android:drawable/ic_media_play"
-        android:title="Right" />
+        android:title="3" />
+    <item
+        android:id="@+id/menu_button4"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="4" />
 </menu>
