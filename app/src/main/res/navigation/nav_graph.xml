@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment1">
 
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.example.l04.Fragment1"
+        android:label="fragment_1"
+        tools:layout="@layout/fragment_1" />
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.l04.Fragment2"
+        android:label="fragment_2"
+        tools:layout="@layout/fragment_2" />
+    <fragment
+        android:id="@+id/fragment3"
+        android:name="com.example.l04.Fragment3"
+        android:label="fragment_3"
+        tools:layout="@layout/fragment_3" />
+    <fragment
+        android:id="@+id/fragment4"
+        android:name="com.example.l04.Fragment4"
+        android:label="fragment_4"
+        tools:layout="@layout/fragment_4" />
+    <action
+        android:id="@+id/action_global_fragment1"
+        app:destination="@id/fragment1"
+        app:launchSingleTop ="true"
+        app:popUpTo="@id/fragment1"
+        />
+    <action
+        android:id="@+id/action_global_fragment2"
+        app:destination="@id/fragment2"
+        app:launchSingleTop ="true"
+        app:popUpTo="@id/fragment1"
+        />
+    <action
+        android:id="@+id/action_global_fragment3"
+        app:destination="@id/fragment3"
+        app:launchSingleTop ="true"
+        app:popUpTo="@id/fragment1"
+        />
+    <action
+        android:id="@+id/action_global_fragment4"
+        app:destination="@id/fragment4"
+        app:launchSingleTop ="true"
+        app:popUpTo="@id/fragment1"
+        />
 </navigation>
