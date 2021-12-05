@@ -25,7 +25,7 @@ A. Przygotować aplikację z ekranem głównym i ekranami dodatkowymi o następu
   Może być zrealizowany na kilka sposobów:
   
   a)\
-  jako aktywność z obrazkiem i fragmentem z view pagerem
+  jako aktywność z obrazkiem i fragmentem z view pagerem \
   kliknięcie obrazka zmienia aktualny na ten kliknięty
   
   b)\
