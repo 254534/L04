@@ -1,5 +1,7 @@
 package com.example.l04
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,10 +10,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 
+private const val SHARED_PHOTO = "currentPhoto"
+private const val SHARED_PHOTO_INX = "current"
+
 class Fragment1 : Fragment() {
     companion object {
         var currentPhoto: Int = 0
         var imageArr: IntArray = FragmentImage.imageArr
+        lateinit var preferences: SharedPreferences
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +38,14 @@ class Fragment1 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        preferences = requireContext().getSharedPreferences(SHARED_PHOTO, Context.MODE_PRIVATE)
+        currentPhoto = preferences.getInt(SHARED_PHOTO_INX, 0)
         updatePhoto(view)
+
         parentFragmentManager.setFragmentResultListener("photoChange", viewLifecycleOwner) {
             requestKey, bundle ->
-            currentPhoto = bundle.getInt("current", 0)
+            currentPhoto = bundle.getInt(SHARED_PHOTO_INX, 0)
+            preferences.edit().putInt(SHARED_PHOTO_INX, currentPhoto).apply()
             updatePhoto(view)
         }
     }
