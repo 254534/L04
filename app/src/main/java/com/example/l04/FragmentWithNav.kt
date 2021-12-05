@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +25,7 @@ class FragmentWithNav : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +41,24 @@ class FragmentWithNav : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_with_nav, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val navHostFragment=childFragmentManager.findFragmentById(R.id.fragmentContainerView)
+                as NavHostFragment
+        navController = navHostFragment.navController
+        val bnNavView =
+            view.findViewById<BottomNavigationView>(R.id.bottom_nav)
+        bnNavView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_button1 -> navController.navigate(R.id.action_global_fragment1)
+                R.id.menu_button2 -> navController.navigate(R.id.action_global_fragment2)
+                R.id.menu_button3 -> navController.navigate(R.id.action_global_fragment3)
+                R.id.menu_button4 -> navController.navigate(R.id.action_global_fragment4)
+            }
+            true
+        }
     }
 
     companion object {

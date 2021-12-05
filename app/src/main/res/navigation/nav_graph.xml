@@ -49,4 +49,14 @@
         app:launchSingleTop ="true"
         app:popUpTo="@id/fragment1"
         />
+<!--    <fragment-->
+<!--        android:id="@+id/fragmentWithNav"-->
+<!--        android:name="com.example.l04.FragmentWithNav"-->
+<!--        android:label="fragment_with_nav"-->
+<!--        tools:layout="@layout/fragment_with_nav" />-->
+<!--    <activity-->
+<!--        android:id="@+id/mainActivity"-->
+<!--        android:name="com.example.l04.MainActivity"-->
+<!--        android:label="activity_main"-->
+<!--        tools:layout="@layout/activity_main" />-->
 </navigation>
