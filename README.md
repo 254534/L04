@@ -1,5 +1,7 @@
 # L04
 
+![image](https://user-images.githubusercontent.com/92735548/144749971-31e0a46d-6465-448d-b171-63266a690410.png)
+
 Ćwiczenie 3 + 4 - cz. II
 A. Przygotować aplikację z ekranem głównym i ekranami dodatkowymi o następujących cechach i zawartości (patrz rys.):
 
@@ -29,18 +31,18 @@ A. Przygotować aplikację z ekranem głównym i ekranami dodatkowymi o następu
   kliknięcie obrazka zmienia aktualny na ten kliknięty
   
   b)\
-  jako aktywność składająca się z dwóch fragmentów\  
-  górny fragment zawiera wybrany/aktualny obrazek, a dolny zawiera view pager, którym można przeglądać i wybierać obrazki\  
+  jako aktywność składająca się z dwóch fragmentów \  
+  górny fragment zawiera wybrany/aktualny obrazek, a dolny zawiera view pager, którym można przeglądać i wybierać obrazki \  
   kliknięcie obrazka zmienia aktualny na ten kliknięty
   
   c)\
-  jako aktywność z fragmentem zawierającym fragment potomny (child)\  
+  jako aktywność z fragmentem zawierającym fragment potomny (child) \  
   funkcjonalność taka jak powyżej
   
   d)\
-  jako fragment (podobnie jak poprzednie) wywoływany wewn. aktywności głównej - czyli pasek nawigacji pozostaje\  
-  realizacja wewnątrz z jednym fragmentem lub dwoma\  
-  funkcjonalność taka jak powyżej\  
+  jako fragment (podobnie jak poprzednie) wywoływany wewn. aktywności głównej - czyli pasek nawigacji pozostaje \  
+  realizacja wewnątrz z jednym fragmentem lub dwoma \  
+  funkcjonalność taka jak powyżej \  
   Uwaga: opcja a) i b) będą trochę niżej punktowane.
 
 6. Wybrany obrazek jest wyświetlany w ekranie głównym/startowym - wystarczy przekazać nr obrazka i użyć przy tworzeniu widoku
