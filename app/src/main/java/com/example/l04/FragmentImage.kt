@@ -6,15 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 
 private const val ARG_PARAM1 = "param1"
 
 class FragmentImage : Fragment() {
-    private val imageArr: IntArray = intArrayOf(
-        R.drawable.z1,
-        R.drawable.z2,
-        R.drawable.z3,
-        R.drawable.z4)
     private var param1: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +33,12 @@ class FragmentImage : Fragment() {
     }
 
     companion object {
+        val imageArr: IntArray = intArrayOf(
+            R.drawable.z1,
+            R.drawable.z2,
+            R.drawable.z3,
+            R.drawable.z4)
+
         @JvmStatic fun newInstance(param1: Int) =
             FragmentImage().apply {
                 arguments = Bundle().apply {
