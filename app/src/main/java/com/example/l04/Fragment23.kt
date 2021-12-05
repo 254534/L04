@@ -1,10 +1,13 @@
 package com.example.l04
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Switch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,16 +40,22 @@ class Fragment23 : Fragment() {
         return inflater.inflate(R.layout.fragment_23, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+//        preferences = requireContext().getSharedPreferences(SHARED_TITLE, Context.MODE_PRIVATE)
+//        val boldSwitch: Switch = view.findViewById(R.id.switchBold)
+//        boldSwitch.isChecked = preferences.getBoolean(SHARED_TITLE_BOLD, false)
+//        boldSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+//
+//        }
+    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Fragment23.
-         */
-        // TODO: Rename and change types and number of parameters
+        const val SHARED_TITLE = "currentFontAdjustments"
+        const val SHARED_TITLE_ITALIC = "italic"
+        const val SHARED_TITLE_BOLD = "bold"
+        lateinit var preferences: SharedPreferences
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Fragment23().apply {

@@ -1,10 +1,17 @@
 package com.example.l04
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,16 +44,12 @@ class Fragment22 : Fragment() {
         return inflater.inflate(R.layout.fragment_22, container, false)
     }
 
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Fragment22.
-         */
-        // TODO: Rename and change types and number of parameters
+        const val SHARED_TEXT = "currentText"
+        const val SHARED_TEXT_CONTENT = "content"
+        lateinit var preferences: SharedPreferences
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Fragment22().apply {
@@ -55,5 +58,16 @@ class Fragment22 : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        preferences = requireContext().getSharedPreferences(SHARED_TEXT, Context.MODE_PRIVATE)
+        val editText: EditText = view.findViewById(R.id.editText)
+        editText.text = Editable.Factory.getInstance().newEditable(preferences.getString(SHARED_TEXT_CONTENT, "couldn't load text"))
+
+        view.findViewById<Button>(R.id.buttonSetText).setOnClickListener {
+            preferences.edit().putString(SHARED_TEXT_CONTENT, editText.text.toString()).apply()
+        }
     }
 }

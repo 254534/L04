@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 
 private const val SHARED_PHOTO = "currentPhoto"
@@ -52,6 +54,12 @@ class Fragment1 : Fragment() {
             "#${Fragment21.newHexColor(255- red)}${Fragment21.newHexColor(255- green)}${Fragment21.newHexColor(255- blue)}")
 
         view.rootView.setBackgroundColor(newColor)
+
+        var preferencesText = requireContext().getSharedPreferences(Fragment22.SHARED_TEXT, Context.MODE_PRIVATE)
+        val text: TextView = view.findViewById(R.id.textView2)
+        text.text = Editable.Factory.getInstance().newEditable(
+            preferencesText.getString(
+                Fragment22.SHARED_TEXT_CONTENT, "couldn't load text"))
 
         parentFragmentManager.setFragmentResultListener("photoChange", viewLifecycleOwner) {
             requestKey, bundle ->
