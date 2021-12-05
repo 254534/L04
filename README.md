@@ -22,22 +22,26 @@ A. Przygotować aplikację z ekranem głównym i ekranami dodatkowymi o następu
 - Bez zapamiętania ale po przejściu/powrocie do głównego ekranu te ustawienia są zastosowane - zastosować przekazywanie danych miedzy fragmentami poprzez słuchacze dla zwracanych rezultatów/danych.
 
 5. Trzeci ekran pozwala ustawić jako aktualny (lub zaniechać tego) obrazek wybierany z kilku - patrz rys.
-Może być zrealizowany na kilka sposobów:
-a)
-jako aktywność z obrazkiem i fragmentem z view pagerem
-kliknięcie obrazka zmienia aktualny na ten kliknięty
-b)
-jako aktywność składająca się z dwóch fragmentów
-górny fragment zawiera wybrany/aktualny obrazek, a dolny zawiera view pager, którym można przeglądać i wybierać obrazki
-kliknięcie obrazka zmienia aktualny na ten kliknięty
-c)
-jako aktywność z fragmentem zawierającym fragment potomny (child)
-funkcjonalność taka jak powyżej
-d)
-jako fragment (podobnie jak poprzednie) wywoływany wewn. aktywności głównej - czyli pasek nawigacji pozostaje
-realizacja wewnątrz z jednym fragmentem lub dwoma
-funkcjonalność taka jak powyżej
-Uwaga: opcja a) i b) będą trochę niżej punktowane.
+  Może być zrealizowany na kilka sposobów:
+  
+  a)
+  jako aktywność z obrazkiem i fragmentem z view pagerem
+  kliknięcie obrazka zmienia aktualny na ten kliknięty
+  
+  b)
+  jako aktywność składająca się z dwóch fragmentów
+  górny fragment zawiera wybrany/aktualny obrazek, a dolny zawiera view pager, którym można przeglądać i wybierać obrazki
+  kliknięcie obrazka zmienia aktualny na ten kliknięty
+  
+  c)
+  jako aktywność z fragmentem zawierającym fragment potomny (child)
+  funkcjonalność taka jak powyżej
+  
+  d)
+  jako fragment (podobnie jak poprzednie) wywoływany wewn. aktywności głównej - czyli pasek nawigacji pozostaje
+  realizacja wewnątrz z jednym fragmentem lub dwoma
+  funkcjonalność taka jak powyżej
+  Uwaga: opcja a) i b) będą trochę niżej punktowane.
 
 6. Wybrany obrazek jest wyświetlany w ekranie głównym/startowym - wystarczy przekazać nr obrazka i użyć przy tworzeniu widoku
 
