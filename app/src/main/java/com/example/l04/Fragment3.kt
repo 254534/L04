@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,5 +57,26 @@ class Fragment3 : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    class MySwipeAdapter(fg: Fragment): FragmentStateAdapter(fg) {
+        override fun createFragment(position: Int): Fragment {
+            return FragmentImage.newInstance(position)
+        }
+        override fun getItemCount(): Int {
+            return 4
+        }
+
+//    override fun getPageTitle(position: Int): CharSequence? {
+//        return
+//    }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val vpAdapter = MySwipeAdapter(this)
+
+        val vPager = view.findViewById<ViewPager2>(R.id.vpager2Swipe)
+        vPager.adapter = vpAdapter
     }
 }
