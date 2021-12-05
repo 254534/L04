@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,5 +59,38 @@ class Fragment2 : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    class MyPagerAdapter3(fg: Fragment): FragmentStateAdapter(fg) {
+        override fun createFragment(position: Int): Fragment {
+            when (position) {
+                0 -> return Fragment21.newInstance("f21", "Page # 1")
+                1 -> return Fragment22.newInstance("f22", "Page # 2")
+                2 -> return Fragment23.newInstance("f23", "Page # 3")
+            }
+            return Fragment21.newInstance("f21", "Page # 1")
+        }
+        override fun getItemCount(): Int {
+            return 3
+        }
+
+//    override fun getPageTitle(position: Int): CharSequence? {
+//        return
+//    }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val vpAdapter = MyPagerAdapter3(this)
+
+        val vPager = view.findViewById<ViewPager2>(R.id.vpager2Tabs)
+        vPager.adapter = vpAdapter
+
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabs2Tabs)
+
+        TabLayoutMediator(tabLayout, vPager) { tab, position ->
+            tab.text = "Tab ${(position + 1)}"
+//            tab.setIcon(tabIcons[0])
+        }.attach()
     }
 }
