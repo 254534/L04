@@ -48,7 +48,7 @@ class Fragment3 : Fragment() {
             var buldleVar: Bundle = Bundle()
             buldleVar.putInt("current", currentPhotoId)
             parentFragmentManager.setFragmentResult("photoChange", buldleVar)
-            //Toast.makeText(requireContext(), buldleVar.getInt("current"), Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "Selected: $currentPhotoId", Toast.LENGTH_SHORT).show()
         }
     }
 }

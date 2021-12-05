@@ -64,11 +64,11 @@ class Fragment2 : Fragment() {
     class MyPagerAdapter3(fg: Fragment): FragmentStateAdapter(fg) {
         override fun createFragment(position: Int): Fragment {
             when (position) {
-                0 -> return Fragment21.newInstance("f21", "Page # 1")
+                0 -> return Fragment21()
                 1 -> return Fragment22.newInstance("f22", "Page # 2")
                 2 -> return Fragment23.newInstance("f23", "Page # 3")
             }
-            return Fragment21.newInstance("f21", "Page # 1")
+            return Fragment21()
         }
         override fun getItemCount(): Int {
             return 3
