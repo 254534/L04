@@ -1,32 +1,17 @@
 package com.example.l04
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
+import android.widget.Toast
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Fragment21.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Fragment21 : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -38,22 +23,71 @@ class Fragment21 : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Fragment21.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Fragment21().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        var hexArray: Array<String> = arrayOf("ff", "ff", "ff")
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val seekBarRed: SeekBar = view.findViewById(R.id.seekBarRed)
+        val seekBarGreen: SeekBar = view.findViewById(R.id.seekBarGreen)
+        val seekBarBlue: SeekBar = view.findViewById(R.id.seekBarBlue)
+        seekBarRed.setOnSeekBarChangeListener(seekBarListenerRed)
+        seekBarGreen.setOnSeekBarChangeListener(seekBarListenerGreen)
+        seekBarBlue.setOnSeekBarChangeListener(seekBarListenerBlue)
+    }
+
+    fun setNewBackgroundColor() {
+        val newColor: Int = Color.parseColor("#${hexArray.joinToString("")}")
+        requireView().setBackgroundColor(newColor)
+    }
+
+    fun newHexColor(i: Int): String {
+        val newI = 255-(i*255)/100
+        return Integer.toHexString(newI).padStart(2, '0')
+    }
+
+    val seekBarListenerRed = object: SeekBar.OnSeekBarChangeListener {
+        override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
+            hexArray[0] = newHexColor(i)
+            setNewBackgroundColor()
+        }
+
+        override fun onStartTrackingTouch(seekBar: SeekBar) {
+            // Do something
+        }
+
+        override fun onStopTrackingTouch(seekBar: SeekBar) {
+            // Do something
+        }
+    }
+
+    val seekBarListenerGreen = object: SeekBar.OnSeekBarChangeListener {
+        override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
+            hexArray[1] = newHexColor(i)
+            setNewBackgroundColor()
+        }
+
+        override fun onStartTrackingTouch(seekBar: SeekBar) {
+            // Do something
+        }
+
+        override fun onStopTrackingTouch(seekBar: SeekBar) {
+            // Do something
+        }
+    }
+
+    val seekBarListenerBlue = object: SeekBar.OnSeekBarChangeListener {
+        override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
+            hexArray[2] = newHexColor(i)
+            setNewBackgroundColor()
+        }
+
+        override fun onStartTrackingTouch(seekBar: SeekBar) {
+            // Do something
+        }
+
+        override fun onStopTrackingTouch(seekBar: SeekBar) {
+            // Do something
+        }
     }
 }
