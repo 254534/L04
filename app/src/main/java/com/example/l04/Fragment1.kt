@@ -3,6 +3,7 @@ package com.example.l04
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
 import androidx.fragment.app.Fragment
@@ -60,6 +61,19 @@ class Fragment1 : Fragment() {
         text.text = Editable.Factory.getInstance().newEditable(
             preferencesText.getString(
                 Fragment22.SHARED_TEXT_CONTENT, "couldn't load text"))
+
+        var preferencesLabel = requireContext().getSharedPreferences(Fragment23.SHARED_TITLE, Context.MODE_PRIVATE)
+        val label: TextView = view.findViewById(R.id.textView)
+        if (preferencesLabel.getBoolean(Fragment23.SHARED_TITLE_BOLD, false)) {
+            label.setTypeface(label.typeface, Typeface.BOLD);
+        }
+        if (preferencesLabel.getBoolean(Fragment23.SHARED_TITLE_ITALIC, false)) {
+            label.setTypeface(label.typeface, Typeface.ITALIC);
+        }
+        if (preferencesLabel.getBoolean(Fragment23.SHARED_TITLE_BOLD, false) and
+            preferencesLabel.getBoolean(Fragment23.SHARED_TITLE_ITALIC, false)) {
+            label.setTypeface(label.typeface, Typeface.BOLD_ITALIC);
+        }
 
         parentFragmentManager.setFragmentResultListener("photoChange", viewLifecycleOwner) {
             requestKey, bundle ->

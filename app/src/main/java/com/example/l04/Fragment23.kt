@@ -42,12 +42,18 @@ class Fragment23 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        preferences = requireContext().getSharedPreferences(SHARED_TITLE, Context.MODE_PRIVATE)
-//        val boldSwitch: Switch = view.findViewById(R.id.switchBold)
-//        boldSwitch.isChecked = preferences.getBoolean(SHARED_TITLE_BOLD, false)
-//        boldSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
-//
-//        }
+        preferences = requireContext().getSharedPreferences(SHARED_TITLE, Context.MODE_PRIVATE)
+        val boldSwitch: Switch = view.findViewById(R.id.switchBold)
+        boldSwitch.isChecked = preferences.getBoolean(SHARED_TITLE_BOLD, false)
+        boldSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            preferences.edit().putBoolean(SHARED_TITLE_BOLD, isChecked).apply()
+        }
+
+        val italicSwitch: Switch = view.findViewById(R.id.switchItalic)
+        italicSwitch.isChecked = preferences.getBoolean(SHARED_TITLE_ITALIC, false)
+        italicSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            preferences.edit().putBoolean(SHARED_TITLE_ITALIC, isChecked).apply()
+        }
     }
 
     companion object {
