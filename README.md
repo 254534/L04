@@ -24,20 +24,20 @@ A. Przygotować aplikację z ekranem głównym i ekranami dodatkowymi o następu
 5. Trzeci ekran pozwala ustawić jako aktualny (lub zaniechać tego) obrazek wybierany z kilku - patrz rys.
   Może być zrealizowany na kilka sposobów:
   
-  a)
+  a)\
   jako aktywność z obrazkiem i fragmentem z view pagerem\
   kliknięcie obrazka zmienia aktualny na ten kliknięty
   
-  b)
+  b)\
   jako aktywność składająca się z dwóch fragmentów\  
   górny fragment zawiera wybrany/aktualny obrazek, a dolny zawiera view pager, którym można przeglądać i wybierać obrazki\  
   kliknięcie obrazka zmienia aktualny na ten kliknięty
   
-  c)
+  c)\
   jako aktywność z fragmentem zawierającym fragment potomny (child)\  
   funkcjonalność taka jak powyżej
   
-  d)
+  d)\
   jako fragment (podobnie jak poprzednie) wywoływany wewn. aktywności głównej - czyli pasek nawigacji pozostaje\  
   realizacja wewnątrz z jednym fragmentem lub dwoma\  
   funkcjonalność taka jak powyżej\  
