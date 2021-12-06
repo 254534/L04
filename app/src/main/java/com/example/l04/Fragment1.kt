@@ -14,14 +14,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
-private const val SHARED_PHOTO = "currentPhoto"
-private const val SHARED_PHOTO_INX = "current"
-
 class Fragment1 : Fragment() {
     companion object {
         var currentPhoto: Int = 0
         var imageArr: IntArray = FragmentImage.imageArr
         lateinit var preferences: SharedPreferences
+        const val SHARED_PHOTO = "currentPhoto"
+        const val SHARED_PHOTO_INX = "current"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,5 +80,10 @@ class Fragment1 : Fragment() {
             preferences.edit().putInt(SHARED_PHOTO_INX, currentPhoto).apply()
             updatePhoto(view)
         }
+
+        val currentPhotoId: Int = currentPhoto
+        var buldleVar: Bundle = Bundle()
+        buldleVar.putInt("current", currentPhotoId)
+        parentFragmentManager.setFragmentResult("photoInit", buldleVar)
     }
 }

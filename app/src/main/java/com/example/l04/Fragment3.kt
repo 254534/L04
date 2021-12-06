@@ -14,6 +14,9 @@ import androidx.viewpager2.widget.ViewPager2
 import kotlin.properties.Delegates
 
 class Fragment3 : Fragment() {
+    companion object {
+        var currentPhotoInx: Int = 0
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,12 +45,24 @@ class Fragment3 : Fragment() {
         val vPager = view.findViewById<ViewPager2>(R.id.vpager2Swipe)
         vPager.adapter = vpAdapter
 
+        parentFragmentManager.setFragmentResultListener("photoInit", viewLifecycleOwner) {
+                requestKey, bundle ->
+            currentPhotoInx = bundle.getInt(Fragment1.SHARED_PHOTO_INX, 0)
+        }
+
+        val imageChosen: ImageView = view.findViewById(R.id.imageViewChosenInF3)
+        imageChosen.setImageResource(FragmentImage.imageArr[currentPhotoInx])
+
         val button: Button = view.findViewById(R.id.buttonChoosePicture)
         button.setOnClickListener {
             val currentPhotoId: Int = vPager.currentItem
             var buldleVar: Bundle = Bundle()
             buldleVar.putInt("current", currentPhotoId)
             parentFragmentManager.setFragmentResult("photoChange", buldleVar)
+
+//            val imageChosen: ImageView = view.findViewById(R.id.imageViewChosenInF3)
+            imageChosen.setImageResource(FragmentImage.imageArr[currentPhotoId])
+            currentPhotoInx = currentPhotoId
 //            Toast.makeText(requireContext(), "Selected: $currentPhotoId", Toast.LENGTH_SHORT).show()
         }
     }
