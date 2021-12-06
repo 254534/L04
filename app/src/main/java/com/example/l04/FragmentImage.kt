@@ -24,6 +24,10 @@ class FragmentImage : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val imageView: ImageView = view.findViewById(R.id.imageViewNoContent)
         imageView.setImageResource(imageArr[param1!!])
+
+        imageView.setOnClickListener {
+            (parentFragment as Fragment3).setCurrentImage()
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

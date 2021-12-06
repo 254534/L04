@@ -17,6 +17,7 @@ import kotlin.properties.Delegates
 class Fragment3 : Fragment() {
     companion object {
         var currentPhotoInx: Int = 0
+        lateinit var vPager: ViewPager2
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +44,7 @@ class Fragment3 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val vpAdapter = MySwipeAdapter(this)
 
-        val vPager = view.findViewById<ViewPager2>(R.id.vpager2Swipe)
+        vPager = view.findViewById<ViewPager2>(R.id.vpager2Swipe)
         vPager.adapter = vpAdapter
 
         parentFragmentManager.setFragmentResultListener("photoInit", viewLifecycleOwner) {
@@ -66,5 +67,20 @@ class Fragment3 : Fragment() {
             currentPhotoInx = currentPhotoId
 //            Toast.makeText(requireContext(), "Selected: $currentPhotoId", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun setCurrentImage() {
+        val imageChosen: ImageView = requireView().findViewById(R.id.imageViewChosenInF3)
+        imageChosen.setImageResource(FragmentImage.imageArr[currentPhotoInx])
+
+        val currentPhotoId: Int = vPager.currentItem
+        var buldleVar: Bundle = Bundle()
+        buldleVar.putInt("current", currentPhotoId)
+        parentFragmentManager.setFragmentResult("photoChange", buldleVar)
+
+//            val imageChosen: ImageView = view.findViewById(R.id.imageViewChosenInF3)
+        imageChosen.setImageResource(FragmentImage.imageArr[currentPhotoId])
+        currentPhotoInx = currentPhotoId
+//            Toast.makeText(requireContext(), "Selected: $currentPhotoId", Toast.LENGTH_SHORT).show()
     }
 }
