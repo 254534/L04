@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -21,6 +22,8 @@ class Fragment1 : Fragment() {
         lateinit var preferences: SharedPreferences
         const val SHARED_PHOTO = "currentPhoto"
         const val SHARED_PHOTO_INX = "current"
+        var tempColor: Int? = null
+        var textContent: String = ""
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,5 +88,42 @@ class Fragment1 : Fragment() {
         var buldleVar: Bundle = Bundle()
         buldleVar.putInt("current", currentPhotoId)
         parentFragmentManager.setFragmentResult("photoInit", buldleVar)
+
+        parentFragmentManager.setFragmentResultListener("hexBackground", viewLifecycleOwner) {
+                requestKey, bundle ->
+            var hexArray: IntArray = bundle.getIntArray("hexTab")!!
+            val newColor: Int = Color.parseColor(
+                "#${Fragment21.newHexColor(255 - hexArray[0])}${
+                    Fragment21.newHexColor(
+                        255 - hexArray[1]
+                    )
+                }${Fragment21.newHexColor(255 - hexArray[2])}")
+            tempColor = newColor
+            view.setBackgroundColor(tempColor!!)
+        }
+
+        parentFragmentManager.setFragmentResultListener("currentText", viewLifecycleOwner) {
+                requestKey, bundle ->
+            textContent = bundle.getString("content", "")
+            text.text = Editable.Factory.getInstance().newEditable(textContent)
+//            Toast.makeText(requireContext(), "x", Toast.LENGTH_LONG).show()
+        }
+
+        if(tempColor != null) {
+            view.setBackgroundColor(tempColor!!)
+        }
+        text.text = Editable.Factory.getInstance().newEditable(textContent)
+
+        val button: Button = view.findViewById(R.id.buttonSavePreferences)
+        button.setOnClickListener {
+            Fragment21.preferences.edit().putInt(Fragment21.SHARED_BACKGROUND_RED, Fragment21.hexArray[0]).apply()
+            Fragment21.preferences.edit().putInt(Fragment21.SHARED_BACKGROUND_GREEN, Fragment21.hexArray[1]).apply()
+            Fragment21.preferences.edit().putInt(Fragment21.SHARED_BACKGROUND_BLUE, Fragment21.hexArray[2]).apply()
+
+            requireContext().getSharedPreferences(Fragment22.SHARED_TEXT, Context.MODE_PRIVATE).edit().putString(
+                Fragment22.SHARED_TEXT_CONTENT, textContent).apply()
+
+            view.rootView.setBackgroundColor(newColor)
+        }
     }
 }

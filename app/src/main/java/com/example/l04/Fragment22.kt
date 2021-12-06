@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,6 +66,14 @@ class Fragment22 : Fragment() {
         preferences = requireContext().getSharedPreferences(SHARED_TEXT, Context.MODE_PRIVATE)
         val editText: EditText = view.findViewById(R.id.editText)
         editText.text = Editable.Factory.getInstance().newEditable(preferences.getString(SHARED_TEXT_CONTENT, "couldn't load text"))
+
+        editText.doOnTextChanged  { text, start, count, after ->
+        var buldleVar: Bundle = Bundle()
+            buldleVar.putString("content", editText.text.toString())
+//            Toast.makeText(requireContext(), editText.text.toString(), Toast.LENGTH_LONG).show()
+            parentFragmentManager.setFragmentResult("currentText", buldleVar)
+            true
+        }
 
         view.findViewById<Button>(R.id.buttonSetText).setOnClickListener {
             preferences.edit().putString(SHARED_TEXT_CONTENT, editText.text.toString()).apply()

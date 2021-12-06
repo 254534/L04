@@ -85,6 +85,9 @@ class Fragment21 : Fragment() {
         override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
             hexArray[0] = i
             setNewBackgroundColor()
+            var buldleVar: Bundle = Bundle()
+            buldleVar.putIntArray("hexTab", hexArray)
+            parentFragmentManager.setFragmentResult("hexBackground", buldleVar)
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -95,6 +98,9 @@ class Fragment21 : Fragment() {
         override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
             hexArray[1] = i
             setNewBackgroundColor()
+            var buldleVar: Bundle = Bundle()
+            buldleVar.putIntArray("hexTab", hexArray)
+            parentFragmentManager.setFragmentResult("hexBackground", buldleVar)
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -105,6 +111,10 @@ class Fragment21 : Fragment() {
         override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
             hexArray[2] = i
             setNewBackgroundColor()
+            var buldleVar: Bundle = Bundle()
+            buldleVar.putIntArray("hexTab", hexArray)
+            parentFragmentManager.setFragmentResult("hexBackground", buldleVar)
+            //Toast.makeText(requireContext(), "x", Toast.LENGTH_LONG).show()
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar) {}
