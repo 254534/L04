@@ -53,19 +53,19 @@ class FragmentWithNav : Fragment() {
         bnNavView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_button1 -> {
-//                    (requireActivity() as MainActivity).setActivityBackButtonVisibility(false)
+                    (requireActivity() as MainActivity).setActivityBackButtonVisibility(false)
                     navController.navigate(R.id.action_global_fragment1)
                 }
                 R.id.menu_button2 -> {
-//                    (requireActivity() as MainActivity).setActivityBackButtonVisibility(true)
+                    (requireActivity() as MainActivity).setActivityBackButtonVisibility(true)
                     navController.navigate(R.id.action_global_fragment2)
                 }
                 R.id.menu_button3 -> {
-//                    (requireActivity() as MainActivity).setActivityBackButtonVisibility(true)
+                    (requireActivity() as MainActivity).setActivityBackButtonVisibility(true)
                     navController.navigate(R.id.action_global_fragment3)
                 }
                 R.id.menu_button4 -> {
-//                    (requireActivity() as MainActivity).setActivityBackButtonVisibility(true)
+                    (requireActivity() as MainActivity).setActivityBackButtonVisibility(false)
                     navController.navigate(R.id.action_global_fragment4)
                 }
             }
