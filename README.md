@@ -2,6 +2,8 @@
 
 https://github.com/254534/L04/tree/master/app/src/main/res/layout
 
+https://github.com/254534/L04/tree/master/app/src/main/java/com/example/l04
+
 ![image](https://user-images.githubusercontent.com/92735548/144749971-31e0a46d-6465-448d-b171-63266a690410.png)
 
 Ćwiczenie 3 + 4 - cz. II
